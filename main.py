@@ -9,7 +9,11 @@ AMO = 100
 EMAIL = "CodeXploide2918@gmail.com"
 PHONE = "+917006985755"
 
-cc_data = input("Card: ").strip()
+import os
+
+cc_data = os.getenv("CARD_DATA")
+if not cc_data:
+    raise ValueError("CARD_DATA not set")
 cc_parts = cc_data.split("|")
 cc = cc_parts[0].strip()
 mm = cc_parts[1].strip().zfill(2)
