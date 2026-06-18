@@ -9,7 +9,11 @@ AMO = 100
 EMAIL = "CodeXploide2918@gmail.com"
 PHONE = "+917006985755"
 
-cc_data = input("Card: ").strip()
+import os
+cc_data = os.environ.get("CARD_DATA", "").strip()
+if not cc_data:
+    print("CARD_DATA environment variable not set!")
+    exit()
 cc_parts = cc_data.split("|")
 cc = cc_parts[0].strip()
 mm = cc_parts[1].strip().zfill(2)
